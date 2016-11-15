@@ -8,10 +8,9 @@
 # Site settings
 title: 大道至简
 email: liuyaqiu1993@gmail.com
-description: This is just my test blog on my local host. I learn jekyll by this test blog. Jekyll is a simple and good blog ware!
+description: Jekyll is a simple and good blog ware!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
-# twitter_username: liuyaqiu93
 github_username: liuyaqiu
 
 permalink: /:title
