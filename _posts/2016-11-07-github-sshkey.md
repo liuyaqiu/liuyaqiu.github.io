@@ -13,7 +13,14 @@ categories: tutorial
 在github的[`密钥设置`](https://github.com/settings/keys)选项中添加生成密钥对的公钥，复制公钥中的内容填入即可。
 
 # **关联本地密钥到github网站**
-首先运行命令`sshadd your_raskey`将私钥添加到ssh本地密钥库中，然后进行测试`ssh -vT git@github.com`，最后提示`Hi ！You've successfully authenticated`即表明已经成功关联。
+首先运行命令`ssh-add your_raskey`将私钥添加到ssh本地密钥库中，然后进行测试`ssh -vT git@github.com`，最后提示`Hi ！You've successfully authenticated`即表明已经成功关联。
+
+使用`ssh-add`命令只能将key暂时性地添加到ssh-agent，如果想要持续性地添加私钥而不每次手动添加，可以修改`~/.ssh/config`中的配置文件，添加以下两行内容即可，其中github_rsa为ssh私钥:
+
+```
+Host github.com
+IdentityFile ~/.ssh/github_rsa
+```
 
 # **修改repo的remote url**
 github repo的默认remote为https方式，要使用ssh连接，需要修改为ssh模式。可以使用`git remote -v`查看当前remote url。例如对于本博客，到github页面中复制ssh remote url: "git@github.com:liuyaqiu/liuyaqiu.github.io.git"，然后运行`git remote set-url origin git@github.com:liuyaqiu/liuyaqiu.github.io.git`。
