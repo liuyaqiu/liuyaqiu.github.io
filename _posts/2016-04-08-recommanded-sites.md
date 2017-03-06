@@ -10,21 +10,17 @@ categories: resource
 * [`Android Developers`](http://developer.android.com/index.html)
 * [`ArchLinux`](https://www.archlinux.org/)
 * [`w3cschools`](http://www.w3schools.com/)
-* [`pluralsight`](https://www.pluralsight.com/)
-* [`treehouse`](https://teamtreehouse.com/)
-* [`codecademy`](https://www.codecademy.com/)
 * [`tutorialspoint`](http://www.tutorialspoint.com/)
-* [`udacity`](https://www.udacity.com/)
-* [`dash`](https://dash.generalassemb.ly/)
-* [`skillshare`](https://www.skillshare.com/)
-* [`udemy`](https://www.udemy.com/)
-* [`BLOC`](https://www.bloc.io/)
 
 # **MOOC**
+* [`Khan Academy`](https://www.khanacademy.org/)
 * [`edX`](https://www.edx.org/)
 * [`coursera`](https://www.coursera.org/)
-* [`Khan Academy`](https://www.khanacademy.org/)
+* [`treehouse`](https://teamtreehouse.com/)
 * [`lynda`](https://www.lynda.com/)
+* [`codecademy`](https://www.codecademy.com/)
+* [`udacity`](https://www.udacity.com/)
+* [`udemy`](https://www.udemy.com/)
 
 # **解题类网站**
 * [`Python Challange`](http://www.pythonchallenge.com/about.php)
@@ -42,8 +38,10 @@ categories: resource
 * [`SaltTiger`](http://www.salttiger.com/)
 * [`BookBL`](http://bookdl.com/)
 * [`1bookcase`](https://1bookcase.com/)
+* [`it-ebooks`](http://it-ebooks.directory/)
 
-# **资讯**
-* [`Medium`](https://medium.com/)
-* [`TED`](https://www.ted.com/)
-* [`BigThink`](http://bigthink.com/)
+# **API文档**
+* [`devdocs`](http://devdocs.io/)
+* [`JavaSE`](https://docs.oracle.com/javase/8/docs/api/index.html)
+* [`cppreference`](http://en.cppreference.com/w/)
+* [`cplusplus`](http://www.cplusplus.com/)
