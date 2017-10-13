@@ -55,3 +55,5 @@ top --> 动态显示系统的进程信息
 ifconfig --> 系统的网络接口信息
 netstat --> 系统的网络端口状态信息
 ```
+
+本文中的各种命令的详细用法，可以参见[man7.org](http://man7.org/linux/man-pages/index.html), 或者[Linux命令大全](http://man.linuxde.net/)。
