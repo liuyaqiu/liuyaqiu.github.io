@@ -42,6 +42,14 @@ dmidecode -t memory --> 内存的详细硬件信息
 cat /proc/meminfo --> 系统的内存信息
 ```
 
+# **GPU信息**
+
+```
+lspci -vnn | grep VGA --> 查看当前VGA设备，有的显卡可能不会显示出来
+lshw -C display --> 查看显卡设备，及其相关信息
+nvidia-smi --> 输出Nvidia GPU的设备运行状态信息，可以使用watch命令获取更新的状态信息
+```
+
 # **进程信息**
 
 ```
