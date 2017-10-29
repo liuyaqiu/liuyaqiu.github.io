@@ -1,6 +1,6 @@
 ---
 layout: post
-titile: Linux Basic Command
+title: Linux Basic Command
 categories: tutorial
 ---
 
