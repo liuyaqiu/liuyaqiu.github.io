@@ -4,6 +4,18 @@ title: Ubuntu包管理
 catagories: tutorial
 ---
 
+# apt
+
+```
+apt list [--option]--> 列出系统安装的包
+apt show package --> 列出package包的详细信息
+apt update --> 更新包列表信息
+apt upgrade --> 升级可更新的包
+apt install package --> 安装package包
+apt remove package --> 移除package包
+apt autoremove package --> 移除package及其关联包
+```
+
 # apt-key
 
 ```
@@ -73,3 +85,6 @@ sudo dpkg -r package --> 移除package包
 
 ## synpatic
 **synpatic**是第三方的图形化包管理工具，使用root身份运行即可。
+
+# 更多命令
+关于**apt**, **apt-key**, **apt-mark**, **dpkg**的更多其他命令，可以通过**man**命令查看其详细文档。
