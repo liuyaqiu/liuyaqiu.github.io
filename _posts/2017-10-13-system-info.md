@@ -18,6 +18,9 @@ uname -m, p, i --> 操作系统的机器类型，处理器类型，硬件类型�
 # **硬盘信息**
 
 ```
+sudo blkid /dev/sda --> 输出磁盘/dev/sda的uuid
+ls -l /dev/disk/by-uuid --> 输出系统所有磁盘的uuid
+lsblk -f --> 输出系统磁盘的详细信息，包括uuid
 df -h --> 以k,m,g为单位显示系统的磁盘使用状态
 fdisk -l --> 当前系统连接的各个硬盘的信息
 lsblk --> 当前系统的磁盘挂载状态
