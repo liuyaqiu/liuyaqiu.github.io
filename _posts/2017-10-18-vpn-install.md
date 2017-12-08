@@ -47,7 +47,7 @@ sudo ssserver -c /etc/shadowsocks.json -d stop --> 终止shadowsocks服务端
 
 ## 客户端安装
 
-在客户端安装shadowsocks的步骤与服务器端相同，配置文件中，***server***项填写为服务器ip地址即可，ipv4或者ipv6均可，*server_port*,*password*,*method*等项需要与服务器配置相同。
+在客户端安装shadowsocks的步骤与服务器端相同，配置文件中，**server**项填写为服务器ip地址即可，ipv4或者ipv6均可，**server_port**,**password**,**method**等项需要与服务器配置相同。
 
 ```
 sudo sslocal -c /path/to/shadowsocks.json -d start --> 启动shadowsocks客户端
@@ -76,15 +76,15 @@ localhost
 
 ### 命令行配置
 
-对于terminal，安装[proxychains](https://github.com/rofl0r/proxychains-ng)进行代理。参考官方文档安装后，`echo "socks5 127.0.0.1 1080" >> /etc/proxychains.conf`即可让proxychains使用shadowsocks进行代理。在需要使用代理的命令前添加proxychains4命令即可，例如`sudo proxychains4 apt-get update`。注意proxychains命令不可代理ping指令，但是可以代理curl指令，可以通过`proxychains4 curl www.google.com`来测试代理网络的连通性。
+对于terminal，安装[proxychains](https://github.com/rofl0r/proxychains-ng)进行代理。参考官方文档安装后，**`echo "socks5 127.0.0.1 1080" >> /etc/proxychains.conf`**即可让proxychains使用shadowsocks进行代理。在需要使用代理的命令前添加proxychains4命令即可，例如**`sudo proxychains4 apt-get update`**。注意proxychains命令不可代理ping指令，但是可以代理curl指令，可以通过**`proxychains4 curl www.google.com`**来测试代理网络的连通性。
 
-我们可以在客户端的`.zshrc`中写入`alias pc='proxychains4`来简化指令，但是当使用sudo命令时，仍然需要使用命令全称。
+我们可以在客户端的***.zshrc***中写入**`alias pc='proxychains4'`**来简化指令，但是当使用sudo命令时，仍然需要使用命令全称。
 
 ### 移动端配置
 
 在Android移动端，可以通过[shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android)来使用shadowsocks，配置方法同上。新版本中加入了广告和不必要的新功能，推荐使用老版本[2.8.3](https://github.com/shadowsocks/shadowsocks-android/releases/tag/v2.8.3)。
 
-# openvpn安装配置
+# **openvpn安装配置**
 
 openvpn安装配置较为复杂，配置项较多，稍有错误openvpn就可能无法正常工作。推荐使用[openvpn一键安装脚本](https://github.com/Nyr/openvpn-install)简化安装。
 
@@ -94,12 +94,26 @@ sudo systemctl openvpn@server start --> 启动openvpn服务端
 sudo systemctl openvpn@server sotp --> 终止openvpn服务端
 ```
 
-安装完成后，脚本会把服务端配置文件写入到`/etc/openvpn/`目录下，并且在当前目录下生成`client.ovpn`配置文件，用户客户端配置。将`client.ovpn`使用ftp或者sftp复制到客户端机器的`/etc/openvpn/`目录下即可。
+安装完成后，脚本会把服务端配置文件写入到***/etc/openvpn/***目录下，并且在当前目录下生成***client.ovpn***配置文件。将***client.ovpn***使用ftp或者sftp复制到客户端机器的***/etc/openvpn/***目录下即可。
 
-注意，如果需要使用让openvpn支持ipv6通道，应该在openvpn的服务端配置文件`/etc/openvpn/server.conf`和客户端配置文件`/etc/openvpn/client.ovpn`中配置`proto udp6`。默认情况下，客户端的所有流量均走vpn通道，我们可以在客户端配置文件中设置`route 10.0.0.0 255.0.0.0 net_gateway`，让局域网流量不走vpn通道。
+注意，如果需要使用让openvpn支持ipv6通道，应该在openvpn的服务端配置文件***/etc/openvpn/server.conf***和客户端配置文件***/etc/openvpn/client.ovpn***中配置**proto udp6**。默认情况下，客户端的所有流量均走vpn通道，我们可以在客户端配置文件中设置**`route 10.0.0.0 255.0.0.0 net_gateway`**，让局域网流量不走vpn通道。
 
 ```
 sudo openvpn /etc/openvpn/client.ovpn > /dev/null & --> 运行openvpn客户端
 ```
 
 在Android移动端可以使用[OpenVPN for Android](https://github.com/schwabe/ics-openvpn)来连接openvpn。配置方法是把`client.ovpn`复制到手机中，在手机中点击该文件，选择***导入OpenVPN配置***。
+
+# **Google地址封禁**
+Google对于大量提交访问的网段会封禁IP，由于许多人使用VPS搭建代理服务器访问Google，导致许多VPS的IP地址被Google封禁，无法使用正常的Google服务，如Google Scholar。
+
+解决这个问题的方法是使用ipv6地址访问Google服务，因为大多数VPS都是直接使用ipv4地址访问，所以被封禁的地址大多数是ipv4，ipv6基本不会被封禁。要让服务器通过ipv6访问Google服务，只需要配置***/etc/hosts***即可，向其中写入所访问的域名的ipv6地址。推荐使用[ipv6-hosts](https://github.com/lennylxx/ipv6-hosts)查询ipv6地址。
+
+```
+$ su
+$ cat >> /etc/hosts
+2404:6800:4008:c00::71 google.com
+2404:6800:4008:c02::63 www.google.com
+2404:6800:4008:c06::be scholar.google.com
+2404:6800:4008:803::2001 scholar.googleusercontent.com
+```
